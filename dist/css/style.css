@@ -1,0 +1,93 @@
+/* chivo-300 - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Chivo";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../../assets/fonts/chivo-v21-latin-300.woff2") format("woff2");
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* chivo-700 - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Chivo";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../../assets/fonts/chivo-v21-latin-700.woff2") format("woff2");
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+:root {
+  --font-primary: "Chivo", sans-serif;
+  --fw-light: 300;
+  --fw-bold: 700;
+  --lh-sm: 120%;
+  --lh-md: 150%;
+  --lh-xl: 200%;
+}
+
+:root {
+  --spacing-50:0.25rem;
+  --spacing-100:0.5rem;
+  --spacing-200:1rem;
+  --spacing-300:1.5rem;
+  --spacing-400:2rem;
+  --spacing-500:2.5rem;
+  --spacing-700:3.5rem;
+  --spacing-800:4rem;
+  --spacing-1000:5rem;
+  --spacing-1100:5.5rem;
+  --spacing-1300:6.5rem;
+}
+
+:root {
+  --clr-green: 157, 74%, 62%;
+  --clr-red: 0, 96%, 61%;
+  --clr-white: #FFFFFF;
+  --clr-blue-950: 224, 35%, 11%;
+  --clr-blue-900: 225, 26%, 23%;
+  --clr-blue-600: 225, 21%, 45%;
+  --clr-blue-300: 225, 40%, 83%;
+  --clr-primary:var(--clr-green);
+  --clr-secondary:var(--clr-blue-600);
+  --clr-secondary-shade:var(--clr-blue-900);
+  --clr-secondary-tint:var(--clr-blue-300);
+  --clr-warning:var(--clr-red);
+  --clr-bg:var(--clr-blue-950);
+  --text-white:var(--clr-white);
+  --btn-hover:color-mix(in hsl, var(--clr-primary) 100%, var(--clr-white) 50%);
+}
+
+/* Reset */
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*, *::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-primary);
+}
+
+img {
+  max-width: 100;
+  display: block;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+.flex {
+  display: flex;
+  gap: var(--gap), 1rem;
+}

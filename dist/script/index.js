@@ -30,6 +30,18 @@ const validateForm = (data) => {
   }
 }
 
+/* 
+  // ALternative validation with auto-loop, but at the moment we have only one validation
+  function validateForm(data) {
+    const errors = {};
+    for (const key in validators) {
+      errors[key] = validators[key](data[key]);
+    }
+    return errors;
+  }
+
+*/
+
 // Email validation function
 function validateEmail(email) {
   // Check if email is empty

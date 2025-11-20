@@ -1,0 +1,26 @@
+:root {
+  // Plain colors
+  --clr-green: 157, 74%, 62%;
+  --clr-red: 0, 96%, 61%;
+  // Only white defined in HEX, because color-mix func. does not give desired result with HSL
+  --clr-white: #FFFFFF;
+  --clr-blue-950: 224, 35%, 11%;
+  --clr-blue-900: 225, 26%, 23%;
+  --clr-blue-600: 225, 21%, 45%;
+  --clr-blue-300: 225, 40%, 83%;
+
+  // Theme colors
+  --clr-primary:var(--clr-green);
+
+  --clr-secondary:var(--clr-blue-600);
+  --clr-secondary-shade:var(--clr-blue-900);
+  --clr-secondary-tint:var(--clr-blue-300);
+
+  --clr-warning:var(--clr-red);
+  --clr-bg:var(--clr-blue-950);
+
+  --text-white:var(--clr-white);
+
+  // Button hover
+  --btn-hover:color-mix(in hsl, var(--clr-primary) 100%, var(--clr-white) 50%);
+}

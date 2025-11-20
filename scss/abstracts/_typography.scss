@@ -1,0 +1,53 @@
+/* chivo-300 - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Chivo';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../../assets/fonts/chivo-v21-latin-300.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* chivo-700 - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Chivo';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../../assets/fonts/chivo-v21-latin-700.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+:root {
+
+  --font-primary: 'Chivo', sans-serif;
+
+  --fw-light: 300;
+  --fw-bold: 700;
+
+  --lh-sm: 120%;
+  --lh-md: 150%;
+  --lh-xl: 200%;
+}
+
+@mixin text-style($size, $weight, $line-height) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+}
+
+
+%text-preset-1 {
+  @include text-style(clamp(px-to-rem(21), 1.75rem + 1.4vw, px-to-rem(48)), var(--fw-light), var(--lh-sm));
+  text-transform: uppercase;
+}
+
+%text-preset-2 {
+  @include text-style(clamp(px-to-rem(14), 0.80rem + 0.35vw, px-to-rem(18)), var(--fw-light), var(--lh-md));
+}
+
+%text-preset-3 {
+  @include text-style(px-to-rem(14), var(--fw-bold), var(--lh-xl))
+}
