@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --clr-green: 157, 74%, 62%;
+      --clr-white: #FFFFFF;
+      
+
+      --clr-primary: 224, 35%, 11%;
+      --clr-secondary: 225, 26%, 23%;
+      
+      --btn-bg: hsl(var(--clr-green));
+      --btn-hovered: color-mix(in hsl, var(--btn-bg) 100%, var(--clr-white) 50%);
+      /* color-mix(in hsl, var(--btn-bg) 100%, white 50%); */
+    }
+
+    form{
+      max-width: 28rem;
+      background-color:hsl(var(--clr-primary));
+      margin-bottom: 40px;
+    }
+
+    .form__email{
+      margin-bottom: 8px;
+    }
+
+    input,
+    button{
+      font-size: 14px;
+      line-height: 200%;
+      font-weight: 700;
+      width: 100%;
+      padding: 8px 32px;
+      border-radius: 28px;
+      border: none;
+    }
+    input{
+      background-color: hsl(var(--clr-secondary));
+      margin-bottom: 8px;
+    }
+
+    button{
+      background-color: var(--btn-bg);
+    }
+
+    button:hover{
+      background-color: var(--btn-hovered);
+    }
+
+    .form__error{
+      color: red;
+    }
+
+    @media (min-width:568px) {
+      .form__email{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 4px;
+        background-color: hsl(var(--clr-secondary));
+        border-radius: 28px;
+      }
+
+      button,input{
+        width: max-content;
+      }
+      input{
+        background-color: transparent;
+        margin: 0;
+        flex-grow: 1;
+      }
+    }
+  
+
+  </style>
+</head>
+
+<body>
+  <form action="#" id="form" class="form" novalidate style="border: 1px solid yellow;">
+    <div class="form__email" style="border: 1px solid red;" >
+      <input type="email" name="email" id="email" placeholder="Email address">
+      <button type="submit">Request access</button>
+    </div>
+    <p class="form__error" id="email-error" style="border: 1px solid lightgreen;"></p>
+  </form>
+
+  <script src="./index.js"></script>
+</body>
+
+</html>
