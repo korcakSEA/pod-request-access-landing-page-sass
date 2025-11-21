@@ -53,6 +53,7 @@
   --spacing-300:1.5rem;
   --spacing-400:2rem;
   --spacing-500:2.5rem;
+  --spacing-600:2.75rem;
   --spacing-700:3.5rem;
   --spacing-800:4rem;
   --spacing-1000:5rem;
@@ -121,15 +122,26 @@ button {
   position: relative;
   background-color: hsl(var(--clr-bg), 0.8);
 }
+@media (min-width: 48rem) {
+  .header {
+    background-color: hsl(var(--clr-bg));
+    padding: var(--spacing-600);
+  }
+}
 
 .hero {
   --gap: 0;
   padding: var(--spacing-400);
   min-height: 100vh;
-  place-content: center;
+  place-items: center;
   /* Hero content */
   /****** Form *****/
   /****** Hero image ******/
+}
+@media (min-width: 48rem) {
+  .hero {
+    --gap:var(--spacing-1300);
+  }
 }
 .hero__content {
   --gap: var(--spacing-700);
@@ -154,8 +166,18 @@ button {
   justify-content: space-between;
   margin-bottom: var(--spacing-500);
 }
+@media (min-width: 48rem) {
+  .hero__logos {
+    padding-top: var(--spacing-300);
+  }
+}
 .hero__logos .hero__logo-item {
   height: 1rem;
+}
+@media (min-width: 48rem) {
+  .hero__logos .hero__logo-item {
+    height: 2rem;
+  }
 }
 .hero__form {
   max-width: 28rem;
@@ -163,16 +185,41 @@ button {
 .hero__form-group {
   margin-bottom: var(--spacing-100);
 }
+@media (min-width: 48rem) {
+  .hero__form-group {
+    display: flex;
+    flex-wrap: wrap;
+    padding: var(--spacing-50);
+    background-color: hsl(var(--clr-secondary));
+    border-radius: 28px;
+  }
+}
 .hero__input, .hero__button {
   width: 100%;
   padding: var(--spacing-100) var(--spacing-400);
   border: none;
   border-radius: var(--spacing-500);
 }
+@media (min-width: 48rem) {
+  .hero__input, .hero__button {
+    width: max-content;
+  }
+}
 .hero__input {
   margin-bottom: var(--spacing-100);
   background-color: hsl(var(--clr-secondary-shade));
   color: var(--text-white);
+}
+.hero__input::placeholder {
+  color: inherit;
+  opacity: 0.7;
+}
+@media (min-width: 48rem) {
+  .hero__input {
+    background-color: transparent;
+    margin: 0;
+    flex-grow: 1;
+  }
 }
 .hero__input:focus {
   outline: none;
@@ -200,9 +247,24 @@ button {
   width: 100%;
   height: 100%;
 }
+@media (min-width: 48rem) {
+  .hero__image {
+    z-index: 0;
+    width: 28.75rem;
+    height: 54.25rem;
+    top: 0;
+    right: 0;
+    left: auto;
+  }
+}
 .hero__image-file {
   width: 100%;
   height: 100%;
   mix-blend-mode: multiply;
   object-fit: cover;
+}
+@media (min-width: 48rem) {
+  .hero__image-file {
+    mix-blend-mode: normal;
+  }
 }

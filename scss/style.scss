@@ -7,15 +7,24 @@
   min-height: 100vh;
   position: relative;
   background-color: hsl(var(--clr-bg), 0.8);
+
+  @include respond-to(md) {
+    background-color: hsl(var(--clr-bg));
+    padding: var(--spacing-600);
+  }
 }
 
 .hero {
   --gap: 0;
+  @include respond-to(md){
+    --gap:var(--spacing-1300);
+  }
   padding: var(--spacing-400);
   min-height: 100vh;
 
   // For Mobile
-  place-content: center;
+  place-items: center;
+  
 
   /* Hero content */
   &__content {
@@ -29,17 +38,17 @@
 
   }
 
-  &__title{
+  &__title {
     @extend %text-preset-1;
-    color:hsl(var(--clr-primary));
+    color: hsl(var(--clr-primary));
     margin-bottom: var(--spacing-100);
 
-    span{
+    span {
       color: var(--text-white);
     }
   }
 
-  &__description{
+  &__description {
     @extend %text-preset-2;
     color: hsl(var(--clr-secondary-tint));
     margin-bottom: var(--spacing-500);
@@ -50,53 +59,84 @@
     justify-content: space-between;
     margin-bottom: var(--spacing-500);
 
-    .hero__logo-item{
+    @include respond-to(md) {
+      padding-top: var(--spacing-300);
+    }
+
+    .hero__logo-item {
       height: 1rem;
+
+      @include respond-to(md) {
+        height: 2rem;
+      }
     }
   }
 
   /****** Form *****/
-  &__form{
+  &__form {
     max-width: 28rem;
   }
-  
-  &__form-group{
+
+  &__form-group {
     margin-bottom: var(--spacing-100);
+
+    @include respond-to(md) {
+      display: flex;
+      flex-wrap: wrap;
+      padding: var(--spacing-50);
+      background-color: hsl(var(--clr-secondary));
+      border-radius: 28px;
+    }
   }
 
   &__input,
-  &__button{
+  &__button {
     @extend %text-preset-3;
     width: 100%;
-    padding:var(--spacing-100) var(--spacing-400);
-    border:none;
+    padding: var(--spacing-100) var(--spacing-400);
+    border: none;
     border-radius: var(--spacing-500);
+
+    @include respond-to(md) {
+      width: max-content
+    }
   }
 
-  &__input{
+  &__input {
     margin-bottom: var(--spacing-100);
     background-color: hsl(var(--clr-secondary-shade));
     color: var(--text-white);
 
-    &:focus{
+    &::placeholder{
+      color: inherit;
+      opacity: 0.7;
+    }
+
+    @include respond-to(md) {
+      background-color: transparent;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    &:focus {
       outline: none;
     }
 
-    &.outline{
+    &.outline {
       border: 2px solid hsl(var(--clr-warning));
     }
   }
 
-  &__button{
+  &__button {
     background-color: hsl(var(--clr-primary));
 
-    &:hover{
+    &:hover {
       background-color: var(--btn-hover);
       cursor: pointer;
     }
   }
 
-  &__error{
+  &__error {
     height: 12px;
     @extend %text-preset-3;
     color: hsl(var(--clr-warning));
@@ -115,11 +155,24 @@
     width: 100%;
     height: 100%;
 
+    @include respond-to(md) {
+      z-index: 0;
+      width: px-to-rem(460);
+      height: px-to-rem(868);
+      top: 0;
+      right: 0;
+      left: auto;
+    }
+
     &-file {
       width: 100%;
       height: 100%;
       mix-blend-mode: multiply;
       object-fit: cover;
+
+      @include respond-to(md) {
+        mix-blend-mode: normal;
+      }
     }
   }
 
