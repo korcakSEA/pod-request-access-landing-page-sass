@@ -16,84 +16,73 @@
     :root {
       --clr-green: 157, 74%, 62%;
       --clr-white: #FFFFFF;
-      
+
 
       --clr-primary: 224, 35%, 11%;
       --clr-secondary: 225, 26%, 23%;
-      
+
       --btn-bg: hsl(var(--clr-green));
       --btn-hovered: color-mix(in hsl, var(--btn-bg) 100%, var(--clr-white) 50%);
       /* color-mix(in hsl, var(--btn-bg) 100%, white 50%); */
     }
 
-    form{
-      max-width: 28rem;
-      background-color:hsl(var(--clr-primary));
-      margin-bottom: 40px;
+    body {
+      font-family: 'Red Hat Display', sans-serif;
+      background-color: hsl(var(--clr-primary));
+      color: var(--clr-white);
+      line-height: 1.5;
     }
 
-    .form__email{
-      margin-bottom: 8px;
+    header{
+      display: grid;
+      min-height: 100vh;
     }
 
-    input,
-    button{
-      font-size: 14px;
-      line-height: 200%;
-      font-weight: 700;
-      width: 100%;
-      padding: 8px 32px;
-      border-radius: 28px;
-      border: none;
-    }
-    input{
-      background-color: hsl(var(--clr-secondary));
-      margin-bottom: 8px;
-    }
+    section
 
-    button{
-      background-color: var(--btn-bg);
+    .content,
+    .image{
+      display: inline-block;
     }
-
-    button:hover{
-      background-color: var(--btn-hovered);
-    }
-
-    .form__error{
-      color: red;
-    }
-
-    @media (min-width:568px) {
-      .form__email{
-        display: flex;
-        flex-wrap: wrap;
-        padding: 4px;
-        background-color: hsl(var(--clr-secondary));
-        border-radius: 28px;
-      }
-
-      button,input{
-        width: max-content;
-      }
-      input{
-        background-color: transparent;
-        margin: 0;
-        flex-grow: 1;
-      }
-    }
-  
-
+    
   </style>
 </head>
 
 <body>
-  <form action="#" id="form" class="form" novalidate style="border: 1px solid yellow;">
-    <div class="form__email" style="border: 1px solid red;" >
-      <input type="email" name="email" id="email" placeholder="Email address">
-      <button type="submit">Request access</button>
+ <header class="header">
+  <section class="hero">
+    <!-- Hero content -->
+    <div class="hero__content">
+      <img src="./assets/desktop/logo.svg" alt="POD logo" class="hero__logo">
+
+      <div class="hero__text">
+        <h1 class="hero__title">Publish your podcasts everywhere.</h1>
+
+        <p class="hero__description">
+          Upload your audio to Pod with a single click. We’ll then distribute your podcast to Spotify,
+          Apple Podcasts, Google Podcasts, Pocket Casts and more!
+        </p>
+        <!-- Email form -->
+        <form action="#" id="form" class="hero__form" novalidate>
+          <div class="hero__form-group">
+            <input type="email" name="email" id="email" class="hero__input" placeholder="Email address">
+            <button type="submit" class="hero__button">Request access</button>
+          </div>
+          <p class="hero__error" id="email-error"></p>
+        </form>
+      </div>
     </div>
-    <p class="form__error" id="email-error" style="border: 1px solid lightgreen;"></p>
-  </form>
+    <!-- Hero Image -->
+    <div class="hero__image">
+      <picture>
+        <source media="(min-width:1024px)" srcset="./assets/desktop/image-host.jpg">
+        <source media="(min-width:600px)" srcset="./assets/tablet/image-host.jpg">
+        <img src="./assets/mobile/image-host.jpg" alt="A person singing in studio" class="hero__image-file">
+      </picture>
+    </div>
+
+  </section>
+</header>
 
   <script src="./dist/script/index.js"></script>
 </body>

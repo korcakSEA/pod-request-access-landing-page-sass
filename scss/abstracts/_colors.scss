@@ -22,5 +22,5 @@
   --text-white:var(--clr-white);
 
   // Button hover
-  --btn-hover:color-mix(in hsl, var(--clr-primary) 100%, var(--clr-white) 50%);
+  --btn-hover:color-mix(in hsl, hsl(var(--clr-primary)) 100%, var(--clr-white) 50%);
 }

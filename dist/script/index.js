@@ -18,6 +18,13 @@ form.addEventListener("submit", (e) => {
     console.log(renderError[key]);
     const errorMessage = renderError[key];
     const el= document.getElementById(`${key}-error`);
+    const jsEmailInput = document.getElementById(`${key}`);
+    // Adding or removing error class based on validation
+    if (errorMessage) {
+      jsEmailInput.classList.add('outline');
+    }else {
+      jsEmailInput.classList.remove('outline');
+    }
     if (el) el.textContent = errorMessage;
   }
 

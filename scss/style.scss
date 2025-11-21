@@ -1,3 +1,126 @@
 @use './abstracts/' as *;
 @forward './base/';
 @forward './layout/';
+
+
+.header {
+  min-height: 100vh;
+  position: relative;
+  background-color: hsl(var(--clr-bg), 0.8);
+}
+
+.hero {
+  --gap: 0;
+  padding: var(--spacing-400);
+  min-height: 100vh;
+
+  // For Mobile
+  place-content: center;
+
+  /* Hero content */
+  &__content {
+    --gap: var(--spacing-700);
+    position: relative;
+    z-index: 1;
+
+    // For Mobile
+    text-align: center;
+    place-items: center;
+
+  }
+
+  &__title{
+    @extend %text-preset-1;
+    color:hsl(var(--clr-primary));
+    margin-bottom: var(--spacing-100);
+
+    span{
+      color: var(--text-white);
+    }
+  }
+
+  &__description{
+    @extend %text-preset-2;
+    color: hsl(var(--clr-secondary-tint));
+    margin-bottom: var(--spacing-500);
+  }
+
+  &__logos {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-500);
+
+    .hero__logo-item{
+      height: 1rem;
+    }
+  }
+
+  /****** Form *****/
+  &__form{
+    max-width: 28rem;
+  }
+  
+  &__form-group{
+    margin-bottom: var(--spacing-100);
+  }
+
+  &__input,
+  &__button{
+    @extend %text-preset-3;
+    width: 100%;
+    padding:var(--spacing-100) var(--spacing-400);
+    border:none;
+    border-radius: var(--spacing-500);
+  }
+
+  &__input{
+    margin-bottom: var(--spacing-100);
+    background-color: hsl(var(--clr-secondary-shade));
+    color: var(--text-white);
+
+    &:focus{
+      outline: none;
+    }
+
+    &.outline{
+      border: 2px solid hsl(var(--clr-warning));
+    }
+  }
+
+  &__button{
+    background-color: hsl(var(--clr-primary));
+
+    &:hover{
+      background-color: var(--btn-hover);
+      cursor: pointer;
+    }
+  }
+
+  &__error{
+    height: 12px;
+    @extend %text-preset-3;
+    color: hsl(var(--clr-warning));
+    text-align: center;
+  }
+
+
+
+  /****** Hero image ******/
+  &__image {
+    // background-color: hsl(var(--clr-bg), 0.8);
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    &-file {
+      width: 100%;
+      height: 100%;
+      mix-blend-mode: multiply;
+      object-fit: cover;
+    }
+  }
+
+}
