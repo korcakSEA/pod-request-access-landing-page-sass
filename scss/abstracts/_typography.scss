@@ -41,12 +41,12 @@
 
 
 %text-preset-1 {
-  @include text-style(clamp(px-to-rem(21), 1.75rem + 1.4vw, px-to-rem(48)), var(--fw-light), var(--lh-sm));
+  @include text-style(clamp(px-to-rem(32), 1.25rem + 3.75vw, px-to-rem(48)), var(--fw-light), var(--lh-sm));
   text-transform: uppercase;
 }
 
 %text-preset-2 {
-  @include text-style(clamp(px-to-rem(14), 0.80rem + 0.35vw, px-to-rem(18)), var(--fw-light), var(--lh-md));
+  @include text-style(clamp(px-to-rem(14), 0.80rem + 0.90vw, px-to-rem(18)), var(--fw-light), var(--lh-md));
 }
 
 %text-preset-3 {
