@@ -12,14 +12,16 @@
 </head>
 
 <body>
-  <header class="header">
-    <section class="hero grid">
+  <!-- header height is elative to window -->
+  <header class="header" style="border: 1px solid red;">
+    <!-- Hero is our main; where content and image sits -->
+    <section class="hero flex">
       <!-- Hero content -->
       <div class="hero__content grid">
         <img src="./assets/desktop/logo.svg" alt="POD logo" class="hero__logo">
         <!-- Text -->
-        <div class="hero__text grid">
-          <div class="hero__text-wrapper">
+        <div class="hero__text-wrapper grid">
+          <div class="hero__text">
             <h1 class="hero__title">Publish your podcasts <span>everywhere.</span></h1>
             <p class="hero__description">
               Upload your audio to Pod with a single click. We’ll then distribute your podcast to Spotify,
@@ -27,15 +29,15 @@
             </p>
           </div>
           <!-- Logos -->
-          <div class="hero__logos">
+          <div class="hero__logos flex">
             <img src="./assets/desktop/spotify.svg" alt="Spotify logo" class="hero__logo-item">
             <img src="./assets/desktop/apple-podcast.svg" alt="Apple Podcasts logo" class="hero__logo-item">
             <img src="./assets/desktop/google-podcasts.svg" alt="Google Podcasts logo" class="hero__logo-item">
             <img src="./assets/desktop/pocket-casts.svg" alt="Pocket Casts logo" class="hero__logo-item">
           </div>
           <!-- Email form. To be Redesigned, due to outline class applied info  -->
-          <form action="#" id="form" class="hero__form" novalidate>
-            <div class="hero__form-group">
+          <form action="#" id="form" class="hero__form" novalidate >
+            <div class="hero__form-group flex " id="email-group">
               <input type="email" name="email" id="email" class="hero__input" placeholder="Email address" autocomplete ="off" required >
               <button type="submit" class="hero__button">Request access</button>
             </div>

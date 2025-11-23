@@ -27,15 +27,15 @@
   --lh-xl: 200%;
 }
 
-.hero__title {
+.hero__text h1 {
   font-size: clamp(2rem, 1.25rem + 3.75vw, 3rem);
   font-weight: var(--fw-light);
   line-height: var(--lh-sm);
   text-transform: uppercase;
 }
 
-.hero__description {
-  font-size: clamp(0.875rem, 0.8rem + 0.9vw, 1.125rem);
+.hero__text p {
+  font-size: clamp(0.875rem, 0.63rem + 1vw, 1.125rem);
   font-weight: var(--fw-light);
   line-height: var(--lh-md);
 }
@@ -53,6 +53,7 @@
   --spacing-200:1rem;
   --spacing-300:1.5rem;
   --spacing-400:2rem;
+  --spacing-450:2.25rem;
   --spacing-500:2.5rem;
   --spacing-600:2.75rem;
   --spacing-700:3.5rem;
@@ -120,8 +121,16 @@ button {
 
 .header {
   min-height: 100vh;
-  position: relative;
+  display: grid;
+  --gap: 0;
+  /* just for mobile size,as it will be mixed with image later */
   background-color: hsl(var(--clr-bg), 0.8);
+  /* 
+     position relative to contain absolutely positioned image inside
+     z-index by default = 0 
+  */
+  position: relative;
+  padding: var(--spacing-450);
 }
 @media (min-width: 48rem) {
   .header {
@@ -131,116 +140,128 @@ button {
 }
 
 .hero {
-  --gap: 0;
-  padding: var(--spacing-400);
-  min-height: 100vh;
-  place-items: center;
-  /* Hero content */
-  /****** Form *****/
-  /****** Hero image ******/
+  margin: auto;
+  max-width: 70rem;
+  justify-content: space-between;
+  /*****   HERO CONTENT; where text and logo sits *****/
+  /* As hero logo does not effect the layout, styled here */
+  /* Logos container */
+  /****** HERO FORM ******/
+  /****** HERO IMAGE ******/
+}
+.hero__logo {
+  margin-inline: auto;
 }
 @media (min-width: 48rem) {
-  .hero {
-    --gap: var(--spacing-1300);
-  }
-}
-@media (min-width: 48rem) {
-  .hero {
-    padding: 0;
+  .hero__logo {
+    margin-inline: 0;
   }
 }
 .hero__content {
   --gap: var(--spacing-700);
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  place-items: center;
 }
 @media (min-width: 48rem) {
   .hero__content {
+    width: 37rem;
     --gap: var(--spacing-1300);
-    text-align: left;
-    place-items: start;
   }
 }
-.hero__text {
+.hero__text-wrapper {
   --gap: var(--spacing-500);
 }
 @media (min-width: 48rem) {
-  .hero__text {
-    width: 37rem;
-    background-color: hsl(var(--clr-bg));
+  .hero__text-wrapper {
     padding-top: var(--spacing-1100);
     padding-right: var(--spacing-800);
   }
 }
-@media (min-width: 75rem) {
+.hero__text {
+  text-align: center;
+}
+@media (min-width: 48rem) {
   .hero__text {
-    width: 48rem;
+    text-align: left;
   }
 }
-.hero__title {
+.hero__text h1 {
   color: hsl(var(--clr-primary));
-  margin-bottom: var(--spacing-100);
+  margin-bottom: var(--spacing-200);
 }
-.hero__title span {
+.hero__text h1 span {
   color: var(--text-white);
 }
 @media (min-width: 48rem) {
-  .hero__title {
-    width: 15ch;
+  .hero__text h1 {
     margin-bottom: var(--spacing-300);
   }
 }
-.hero__description {
+.hero__text p {
   color: hsl(var(--clr-secondary-tint));
 }
 @media (min-width: 48rem) {
-  .hero__description {
+  .hero__text p {
     width: 40ch;
   }
 }
 .hero__logos {
-  display: flex;
+  --gap: 0;
   justify-content: space-between;
 }
 @media (min-width: 48rem) {
   .hero__logos {
-    padding-top: var(--spacing-200);
-    margin-bottom: 0;
+    padding-top: var(--spacing-300);
+    order: 1;
+    margin-right: -25px;
   }
 }
-.hero__logos .hero__logo-item {
-  height: 1rem;
+.hero .hero__logo-item {
+  height: calc(0.5rem + 1.75vw);
 }
 @media (min-width: 48rem) {
-  .hero__logos .hero__logo-item {
-    height: 1.5rem;
+  .hero .hero__logo-item {
+    height: auto;
   }
 }
 .hero__form {
   max-width: 28rem;
+  width: 100%;
+  margin-inline: auto;
+}
+@media (min-width: 48rem) {
+  .hero__form {
+    margin-inline: 0;
+  }
 }
 .hero__form-group {
   margin-bottom: var(--spacing-100);
+  flex-direction: column;
+  --gap: var(--spacing-100);
 }
 @media (min-width: 48rem) {
   .hero__form-group {
+    display: flex;
+    flex-direction: row;
+    --gap: 0;
+    padding: var(--spacing-50);
     background-color: hsl(var(--clr-secondary));
     border-radius: 28px;
-    position: relative;
-    margin: 0;
+  }
+  .hero__form-group.outline {
+    border: 2px solid hsl(var(--clr-warning));
   }
 }
 .hero__input, .hero__button {
-  width: 100%;
   padding: var(--spacing-100) var(--spacing-400);
   border: none;
   border-radius: var(--spacing-500);
 }
+@media (min-width: 48rem) {
+  .hero__input, .hero__button {
+    width: max-content;
+  }
+}
 .hero__input {
-  margin-bottom: var(--spacing-100);
-  background-color: hsl(var(--clr-secondary-shade));
+  background-color: hsl(var(--clr-secondary-shade), 0.2);
   color: var(--text-white);
 }
 .hero__input::placeholder {
@@ -252,7 +273,6 @@ button {
     background-color: transparent;
     margin: 0;
     flex-grow: 1;
-    padding-top: var(--spacing-200);
   }
 }
 .hero__input:focus {
@@ -268,16 +288,8 @@ button {
   background-color: var(--btn-hover);
   cursor: pointer;
 }
-@media (min-width: 48rem) {
-  .hero__button {
-    position: absolute;
-    right: 4px;
-    top: 4px;
-    width: max-content;
-  }
-}
 .hero__error {
-  height: 12px;
+  font-size: 12px;
   color: hsl(var(--clr-warning));
   text-align: center;
 }
@@ -288,25 +300,18 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-}
-@media (min-width: 48rem) {
-  .hero__image {
-    z-index: 0;
-    width: 28.75rem;
-    height: 54.25rem;
-    top: 0;
-    right: 0;
-    left: auto;
-  }
+  /*    @include respond-to(md) {
+       position: relative;
+       z-index: 0;
+       width: px-to-rem(416);
+     } */
 }
 .hero__image-file {
   width: 100%;
   height: 100%;
   mix-blend-mode: multiply;
   object-fit: cover;
-}
-@media (min-width: 48rem) {
-  .hero__image-file {
-    mix-blend-mode: normal;
-  }
+  /*       @include respond-to(md) {
+          mix-blend-mode: normal;
+        } */
 }

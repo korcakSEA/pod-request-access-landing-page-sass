@@ -18,7 +18,11 @@ form.addEventListener("submit", (e) => {
     console.log(renderError[key]);
     const errorMessage = renderError[key];
     const el= document.getElementById(`${key}-error`);
-    const jsEmailInput = document.getElementById(`${key}`);
+    let jsEmailInput = document.getElementById(`${key}-group`);
+    // For mobile view, outline class is applied to input field instead of form group
+    if (window.innerWidth < 768) {
+      jsEmailInput = document.getElementById(`${key}`);
+    } 
     // Adding or removing error class based on validation
     if (errorMessage) {
       jsEmailInput.classList.add('outline');

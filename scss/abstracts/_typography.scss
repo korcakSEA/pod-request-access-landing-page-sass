@@ -46,7 +46,7 @@
 }
 
 %text-preset-2 {
-  @include text-style(clamp(px-to-rem(14), 0.80rem + 0.90vw, px-to-rem(18)), var(--fw-light), var(--lh-md));
+  @include text-style(clamp(px-to-rem(14), 0.63rem + 1vw, px-to-rem(18)), var(--fw-light), var(--lh-md));
 }
 
 %text-preset-3 {

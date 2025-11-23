@@ -2,142 +2,169 @@
 @forward './base/';
 @forward './layout/';
 
-
+// Header full viewport height
 .header {
   min-height: 100vh;
-  position: relative;
+  display: grid;
+  --gap: 0;
+
+  /* just for mobile size,as it will be mixed with image later */
   background-color: hsl(var(--clr-bg), 0.8);
+
+  /* 
+   position relative to contain absolutely positioned image inside
+   z-index by default = 0 
+*/
+  position: relative;
+
+  padding: var(--spacing-450);
+
 
   @include respond-to(md) {
     background-color: hsl(var(--clr-bg));
     padding: var(--spacing-600);
   }
+
+
+
 }
 
 .hero {
-  --gap: 0;
+  margin: auto;
+  max-width: px-to-rem(1120);
+  justify-content: space-between;
 
-  @include respond-to(md) {
-    --gap: var(--spacing-1300);
+
+
+  /*****   HERO CONTENT; where text and logo sits *****/
+
+  /* As hero logo does not effect the layout, styled here */
+  &__logo {
+    margin-inline: auto;
+
+    @include respond-to(md) {
+      margin-inline: 0;
+    }
   }
 
-  padding: var(--spacing-400);
-  min-height: 100vh;
-
-  @include respond-to(md) {
-    padding: 0;
-  }
-
-
-  // For Mobile
-  place-items: center;
-
-
-  /* Hero content */
   &__content {
     --gap: var(--spacing-700);
-    position: relative;
-    z-index: 1;
-
-    // For Mobile
-    text-align: center;
-    place-items: center;
-
-    // tablet and desktop
-    @include respond-to(md) {
-      --gap: var(--spacing-1300);
-
-      text-align: left;
-      place-items: start;
-    }
-
-  }
-
-  &__text {
-    --gap: var(--spacing-500);
 
     @include respond-to(md) {
       width: px-to-rem(592);
-      background-color: hsl(var(--clr-bg));
+      --gap: var(--spacing-1300);
+    }
+  }
+
+  // In text wrapper there are 3 items; text, logo and form
+  // form and logo changes position on md size screens, so we use grid here
+  &__text-wrapper {
+    --gap: var(--spacing-500);
+
+    @include respond-to(md) {
       padding-top: var(--spacing-1100);
-      padding-right: var(--spacing-800)
-    }
-
-    @include respond-to(lg) {
-      width: px-to-rem(768);
+      padding-right: var(--spacing-800);
     }
   }
 
-  &__title {
-    @extend %text-preset-1;
-    color: hsl(var(--clr-primary));
-    margin-bottom: var(--spacing-100);
-
-    span {
-      color: var(--text-white);
-    }
+  &__text {
+    text-align: center;
 
     @include respond-to(md) {
-      width: 15ch;
-      margin-bottom: var(--spacing-300);
-    }
-  }
-
-  &__description {
-    @extend %text-preset-2;
-    color: hsl(var(--clr-secondary-tint));
-
-    @include respond-to(md) {
-      width: 40ch;
-    }
-  }
-
-  &__logos {
-    display: flex;
-    justify-content: space-between;
-
-    @include respond-to(md) {
-      padding-top: var(--spacing-200);
-      margin-bottom: 0;
+      text-align: left;
     }
 
-    .hero__logo-item {
-      height: 1rem;
+    // Hero title
+    h1 {
+      @extend %text-preset-1;
+      color: hsl(var(--clr-primary));
+      margin-bottom: var(--spacing-200);
+
+      span {
+        color: var(--text-white);
+      }
 
       @include respond-to(md) {
-        height: 1.5rem;
+        margin-bottom: var(--spacing-300);
+      }
+    }
+
+    // Hero description
+    p {
+      @extend %text-preset-2;
+      color: hsl(var(--clr-secondary-tint));
+
+      @include respond-to(md) {
+        width: 40ch;
       }
     }
   }
 
-  /****** Form *****/
+  /* Logos container */
+  &__logos {
+    --gap: 0;
+    justify-content: space-between;
+
+    @include respond-to(md) {
+      padding-top: var(--spacing-300);
+      order: 1;
+      margin-right: -25px;
+    }
+  }
+
+  .hero__logo-item {
+    height: calc(px-to-rem(8) + 1.75vw);
+
+    @include respond-to(md) {
+      height: auto
+    }
+  }
+
+  /****** HERO FORM ******/
   &__form {
     max-width: 28rem;
+    width: 100%;
+    margin-inline: auto;
+
+    @include respond-to(md) {
+      margin-inline: 0;
+    }
   }
 
   &__form-group {
     margin-bottom: var(--spacing-100);
+    flex-direction: column;
+    --gap: var(--spacing-100);
 
     @include respond-to(md) {
+      display: flex;
+      flex-direction: row;
+      --gap: 0;
+      padding: var(--spacing-50);
       background-color: hsl(var(--clr-secondary));
       border-radius: 28px;
-      position: relative;
-      margin: 0
+
+      // if the screen is md size or larger, outline class is applied to form group
+      &.outline {
+        border: 2px solid hsl(var(--clr-warning));
+      }
     }
   }
 
   &__input,
   &__button {
     @extend %text-preset-3;
-    width: 100%;
     padding: var(--spacing-100) var(--spacing-400);
     border: none;
     border-radius: var(--spacing-500);
+
+    @include respond-to(md) {
+      width: max-content
+    }
   }
 
   &__input {
-    margin-bottom: var(--spacing-100);
-    background-color: hsl(var(--clr-secondary-shade));
+    background-color: hsl(var(--clr-secondary-shade), 0.2);
     color: var(--text-white);
 
     &::placeholder {
@@ -149,8 +176,6 @@
       background-color: transparent;
       margin: 0;
       flex-grow: 1;
-      padding-top: var(--spacing-200);
-      
     }
 
     &:focus {
@@ -170,53 +195,43 @@
       cursor: pointer;
     }
 
-    @include respond-to(md) {
-      position: absolute;
-      right: 4px;
-      top: 4px;
-      width: max-content;
-    }
-
   }
 
   &__error {
-    height: 12px;
     @extend %text-preset-3;
+    font-size: 12px;
     color: hsl(var(--clr-warning));
     text-align: center;
   }
 
 
 
-  /****** Hero image ******/
+  /****** HERO IMAGE ******/
   &__image {
-    // background-color: hsl(var(--clr-bg), 0.8);
     position: absolute;
+    // we out image container behind header content
     z-index: -1;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
 
-    @include respond-to(md) {
+ /*    @include respond-to(md) {
+      position: relative;
       z-index: 0;
-      width: px-to-rem(460);
-      height: px-to-rem(868);
-      top: 0;
-      right: 0;
-      left: auto;
-    }
+      width: px-to-rem(416);
+    } */
 
     &-file {
       width: 100%;
       height: 100%;
+      // we mix it with header background color
       mix-blend-mode: multiply;
       object-fit: cover;
 
-      @include respond-to(md) {
+/*       @include respond-to(md) {
         mix-blend-mode: normal;
-      }
+      } */
     }
   }
-
 }
