@@ -48,6 +48,10 @@
       --gap: var(--spacing-1300);
       align-items: flex-start;
     }
+
+    @include respond-to(lg) {
+      --gap: var(--spacing-1300);
+    }
   }
 
   /*  In text wrapper there are 3 items; text, logo and form
@@ -110,7 +114,7 @@
     justify-content: space-between;
     align-items: center;
 
-    @include respond-to(md){
+    @include respond-to(md) {
       order: 1;
       padding-top: var(--spacing-300);
     }
