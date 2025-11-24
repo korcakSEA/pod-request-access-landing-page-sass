@@ -87,7 +87,8 @@ html {
   scroll-behavior: smooth;
 }
 
-*, *::after,
+*,
+*::after,
 *::before {
   margin: 0;
   padding: 0;
@@ -99,9 +100,11 @@ body {
   font-family: var(--font-primary);
 }
 
-img {
-  max-width: 100%;
+picture {
   display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 input,
@@ -119,109 +122,7 @@ button {
   gap: var(--gap, 1rem);
 }
 
-.header {
-  min-height: 100vh;
-  display: grid;
-  --gap: 0;
-  /* just for mobile size,as it will be mixed with image later */
-  background-color: hsl(var(--clr-bg), 0.8);
-  /* 
-     position relative to contain absolutely positioned image inside
-     z-index by default = 0 
-  */
-  position: relative;
-  padding: var(--spacing-450);
-}
-@media (min-width: 48rem) {
-  .header {
-    background-color: hsl(var(--clr-bg));
-    padding: var(--spacing-600);
-  }
-}
-
-.hero {
-  margin: auto;
-  max-width: 70rem;
-  justify-content: space-between;
-  /*****   HERO CONTENT; where text and logo sits *****/
-  /* As hero logo does not effect the layout, styled here */
-  /* Logos container */
-  /****** HERO FORM ******/
-  /****** HERO IMAGE ******/
-}
-.hero__logo {
-  margin-inline: auto;
-}
-@media (min-width: 48rem) {
-  .hero__logo {
-    margin-inline: 0;
-  }
-}
-.hero__content {
-  --gap: var(--spacing-700);
-}
-@media (min-width: 48rem) {
-  .hero__content {
-    width: 37rem;
-    --gap: var(--spacing-1300);
-  }
-}
-.hero__text-wrapper {
-  --gap: var(--spacing-500);
-}
-@media (min-width: 48rem) {
-  .hero__text-wrapper {
-    padding-top: var(--spacing-1100);
-    padding-right: var(--spacing-800);
-  }
-}
-.hero__text {
-  text-align: center;
-}
-@media (min-width: 48rem) {
-  .hero__text {
-    text-align: left;
-  }
-}
-.hero__text h1 {
-  color: hsl(var(--clr-primary));
-  margin-bottom: var(--spacing-200);
-}
-.hero__text h1 span {
-  color: var(--text-white);
-}
-@media (min-width: 48rem) {
-  .hero__text h1 {
-    margin-bottom: var(--spacing-300);
-  }
-}
-.hero__text p {
-  color: hsl(var(--clr-secondary-tint));
-}
-@media (min-width: 48rem) {
-  .hero__text p {
-    width: 40ch;
-  }
-}
-.hero__logos {
-  --gap: 0;
-  justify-content: space-between;
-}
-@media (min-width: 48rem) {
-  .hero__logos {
-    padding-top: var(--spacing-300);
-    order: 1;
-    margin-right: -25px;
-  }
-}
-.hero .hero__logo-item {
-  height: calc(0.5rem + 1.75vw);
-}
-@media (min-width: 48rem) {
-  .hero .hero__logo-item {
-    height: auto;
-  }
-}
+/****** HERO FORM ******/
 .hero__form {
   max-width: 28rem;
   width: 100%;
@@ -233,17 +134,17 @@ button {
   }
 }
 .hero__form-group {
-  margin-bottom: var(--spacing-100);
   flex-direction: column;
   --gap: var(--spacing-100);
 }
 @media (min-width: 48rem) {
   .hero__form-group {
+    margin-bottom: 0;
     display: flex;
     flex-direction: row;
     --gap: 0;
     padding: var(--spacing-50);
-    background-color: hsl(var(--clr-secondary));
+    background-color: hsl(var(--clr-secondary), 0.8);
     border-radius: 28px;
   }
   .hero__form-group.outline {
@@ -293,25 +194,198 @@ button {
   color: hsl(var(--clr-warning));
   text-align: center;
 }
+
+.header {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --gap: 0;
+  /* just for mobile size,as it will be mixed with image later */
+  background-color: hsl(var(--clr-bg), 0.8);
+  position: relative;
+  padding: var(--spacing-450);
+  overflow-x: clip;
+}
+@media (min-width: 48rem) {
+  .header {
+    background-color: hsl(var(--clr-bg));
+    padding: var(--spacing-600);
+  }
+}
+@media (min-width: 75rem) {
+  .header {
+    padding: var(--spacing-1000);
+  }
+}
+
+.hero {
+  width: 100%;
+  max-width: 70rem;
+  /***** HERO CONTENT STYLING *****/
+  /*  In text wrapper there are 3 items; text, logo and form
+  form and logo changes position on md size screens */
+  /***** HERO IMAGE STYLING *****/
+}
+@media (min-width: 48rem) {
+  .hero {
+    justify-content: space-between;
+  }
+}
+.hero__content {
+  --gap: var(--spacing-700);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 48rem) {
+  .hero__content {
+    --gap: var(--spacing-1300);
+    align-items: flex-start;
+  }
+}
+.hero__text-wrapper {
+  --gap: var(--spacing-500);
+  flex-direction: column;
+}
+@media (min-width: 48rem) {
+  .hero__text-wrapper {
+    width: 37rem;
+    padding-top: var(--spacing-1100);
+    padding-right: var(--spacing-800);
+    background-color: hsl(var(--clr-bg));
+    position: relative;
+    z-index: 1;
+  }
+}
+@media (min-width: 75rem) {
+  .hero__text-wrapper {
+    width: 46rem;
+  }
+}
+.hero__text {
+  text-align: center;
+}
+@media (min-width: 48rem) {
+  .hero__text {
+    text-align: left;
+  }
+}
+.hero__text h1 {
+  color: hsl(var(--clr-primary));
+  margin-bottom: var(--spacing-200);
+}
+.hero__text h1 span {
+  color: var(--text-white);
+}
+@media (min-width: 48rem) {
+  .hero__text h1 {
+    margin-bottom: var(--spacing-300);
+  }
+}
+.hero__text p {
+  color: hsl(var(--clr-secondary-tint));
+}
+@media (min-width: 48rem) {
+  .hero__text p {
+    width: 40ch;
+  }
+}
+.hero__logos {
+  --gap: 0;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (min-width: 48rem) {
+  .hero__logos {
+    order: 1;
+    padding-top: var(--spacing-300);
+  }
+}
+.hero__logos img:nth-child(1) {
+  width: clamp(3.5rem, 1.1145rem + 10vw, 6rem);
+}
+.hero__logos img:nth-child(2) {
+  width: clamp(2.8125rem, 0.85rem + 8.4vw, 4.875rem);
+}
+.hero__logos img:nth-child(3) {
+  width: clamp(4.5615rem, 1.45rem + 13.2vw, 7.8125rem);
+}
+.hero__logos img:nth-child(4) {
+  width: clamp(4.75rem, 1.6rem + 13.5vw, 8.0625rem);
+}
 .hero__image {
+  width: 100%;
+  height: 100%;
   position: absolute;
-  z-index: -1;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  /*    @include respond-to(md) {
-       position: relative;
-       z-index: 0;
-       width: px-to-rem(416);
-     } */
+  z-index: -1;
+}
+@media (min-width: 48rem) {
+  .hero__image {
+    position: relative;
+    /* Image container returns to its original position */
+    z-index: 0;
+    width: 416px;
+    height: 100%;
+    margin-left: -275px;
+    /* Push image to left side */
+  }
+}
+@media (min-width: 75rem) {
+  .hero__image {
+    width: 736px;
+    margin-left: -400px;
+    /* Push image to left side */
+  }
+}
+.hero__image-dot {
+  display: none;
+  /* hidden for mobile */
+}
+@media (min-width: 48rem) {
+  .hero__image-dot {
+    /* shown on tablet and desktop */
+    display: block;
+    position: absolute;
+    top: 38rem;
+    left: 22.25rem;
+    z-index: 1;
+  }
+}
+@media (min-width: 75rem) {
+  .hero__image-dot {
+    /* shown on tablet and desktop */
+    top: 37.625rem;
+    left: 41.25rem;
+  }
 }
 .hero__image-file {
+  /* Image itself, with and height 100% of container */
   width: 100%;
   height: 100%;
-  mix-blend-mode: multiply;
+  display: block;
   object-fit: cover;
-  /*       @include respond-to(md) {
-          mix-blend-mode: normal;
-        } */
+  /* picture element as a position will follow image container,
+   defined in boilerplate.scss */
+}
+@media (min-width: 48rem) {
+  .hero__image-file {
+    /* positioning for tablet screen sizes */
+    width: 460px;
+    height: 868px;
+    position: absolute;
+    bottom: -662px;
+    left: 0;
+  }
+}
+@media (min-width: 75rem) {
+  .hero__image-file {
+    /* positioning for desktop screen sizes */
+    width: 960px;
+    height: 652px;
+    position: static;
+  }
 }

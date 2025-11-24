@@ -5,24 +5,28 @@ html {
   scroll-behavior: smooth;
 }
 
-*,*::after,
-*::before{
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
 }
 
-body{
+body {
   min-height: 100vh; //Prevents short pages being an issue
   font-family: var(--font-primary);
 }
 
-img{
-  max-width: 100%;
+// Make images responsive, to be used as block element, inside a container image will behave responsively according to screen size
+picture {
   display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 input,
-button{
+button {
   font: inherit;
 }

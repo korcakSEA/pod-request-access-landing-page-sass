@@ -13,14 +13,14 @@
 
 <body>
   <!-- header height is elative to window -->
-  <header class="header" style="border: 1px solid red;">
+  <header class="header">
     <!-- Hero is our main; where content and image sits -->
-    <section class="hero flex">
+    <div class="hero flex">
       <!-- Hero content -->
-      <div class="hero__content grid">
+      <div class="hero__content flex">
         <img src="./assets/desktop/logo.svg" alt="POD logo" class="hero__logo">
         <!-- Text -->
-        <div class="hero__text-wrapper grid">
+        <div class="hero__text-wrapper flex">
           <div class="hero__text">
             <h1 class="hero__title">Publish your podcasts <span>everywhere.</span></h1>
             <p class="hero__description">
@@ -47,14 +47,17 @@
       </div>
       <!-- Hero Image -->
       <div class="hero__image">
+        <div class="hero__image-dot">
+          <img src="./assets/desktop/bg-pattern-dots.svg" alt="">
+        </div>
         <picture>
           <source media="(min-width:1200px)" srcset="./assets/desktop/image-host.jpg">
           <source media="(min-width:600px)" srcset="./assets/tablet/image-host.jpg">
           <img src="./assets/mobile/image-host.jpg" alt="A person singing in studio" class="hero__image-file">
         </picture>
-      </div>
+      </div> 
 
-    </section>
+    </div>
   </header>
 
   <script src="./dist/script/index.js"></script>
