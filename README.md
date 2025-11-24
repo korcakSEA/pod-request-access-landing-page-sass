@@ -43,12 +43,13 @@ Users should be able to:
 - CSS custom properties
 - Flexbox
 - CSS Grid
+- JavaScript
 - Mobile-first workflow
 - [SASS/SCSS](https://sass-lang.com/) - CSS  preprocessor
 
 ### What I learned
 
-This project helped me revisit many basic fundamentals and apply styling classes to different elements across various screen sizes with javaScript
+This project helped me revisit many basic fundamentals and apply styling classes to different elements across various screen sizes with JavaScript
 
 ### Useful resources
 
